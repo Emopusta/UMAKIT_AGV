@@ -14,6 +14,7 @@ namespace Persistence.EntityConfigurations
         public void Configure(EntityTypeBuilder<Image> builder)
         {
             builder.ToTable("Images").HasKey(k => k.Id);
+            builder.Property(p => p.VehicleId).HasColumnName("VehicleId");
             builder.Property(p => p.Path).HasColumnName("Path");
         }
     }

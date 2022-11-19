@@ -16,6 +16,8 @@ namespace Application.Features.Images.Commands.AddImage
     public class AddImageCommand : IRequest<AddedImageDto>
     {
         public IFormFile File { get; set; }
+        public int VehicleId { get; set; }
+
 
         public class AddImageCommandHandler : IRequestHandler<AddImageCommand, AddedImageDto>
         {
@@ -30,12 +32,14 @@ namespace Application.Features.Images.Commands.AddImage
             {
                 Image image = new()
                 {
+                    VehicleId = request.VehicleId,
                     Path = FileHelper.Upload(request.File, ImageConstants.Path)
                 };
                 Image addedImage = await _imageRepository.AddAsync(image);
                 AddedImageDto result = new()
                 {
                     Id = addedImage.Id,
+                    VehicleId = addedImage.VehicleId,
                     Path= addedImage.Path,
                     CreatedDate = addedImage.CreatedDate,
                 };

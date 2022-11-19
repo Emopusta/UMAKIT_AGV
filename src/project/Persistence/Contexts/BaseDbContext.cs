@@ -18,6 +18,7 @@ namespace Persistence.Contexts
         protected IConfiguration Configuration { get; set; }
 
         public DbSet<Image> Images { get; set; }
+        public DbSet<Vehicle> Vehicles { get; set; }
 
 
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)

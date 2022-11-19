@@ -9,6 +9,7 @@ namespace Application.Features.Images.Dtos
     public class AddedImageDto
     {
         public int Id { get; set; }
+        public int VehicleId { get; set; }
         public string Path { get; set; }
         public DateTime CreatedDate { get; set; }
     }

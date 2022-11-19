@@ -1,16 +1,14 @@
 ﻿using Core.Repositories;
+using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Entities
+namespace Application.Services.Repositories
 {
-    public class Image : Entity
+    public interface IVehicleRepository : IAsyncRepository<Vehicle>, IRepository<Vehicle>
     {
-        public int VehicleId { get; set; }
-        public string Path { get; set; }
-
     }
 }

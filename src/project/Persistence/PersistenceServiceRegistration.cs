@@ -21,6 +21,7 @@ namespace Persistence
                                                      options.UseSqlServer(
                                                          configuration.GetConnectionString("UMAKITAGVConnectionString")));
             services.AddScoped<IImageRepository, ImageRepository>();
+            services.AddScoped<IVehicleRepository, VehicleRepository>();
 
 
             return services;
