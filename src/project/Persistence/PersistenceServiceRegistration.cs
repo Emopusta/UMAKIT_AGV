@@ -22,6 +22,7 @@ namespace Persistence
                                                          configuration.GetConnectionString("UMAKITAGVConnectionString")));
             services.AddScoped<IImageRepository, ImageRepository>();
             services.AddScoped<IVehicleRepository, VehicleRepository>();
+            services.AddScoped<IStreamImageRepository, StreamImageRepository>();
 
 
             return services;

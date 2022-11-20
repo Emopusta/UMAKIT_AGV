@@ -19,6 +19,7 @@ namespace Persistence.Contexts
 
         public DbSet<Image> Images { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<StreamImage> StreamImages { get; set; }
 
 
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
