@@ -25,6 +25,10 @@ namespace Persistence
             services.AddScoped<IStreamImageRepository, StreamImageRepository>();
 
 
+
+            
+
+
             return services;
         }
     }

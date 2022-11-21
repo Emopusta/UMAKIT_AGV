@@ -10,9 +10,9 @@ namespace WebAPI.Controllers
     public class ImagesController : BaseController
     {
         [HttpPost]
-        public async Task<IActionResult> Add(IFormFile file)
+        public async Task<IActionResult> Add(IFormFile file, int vehicleId)
         {
-            AddImageCommand addGIFCommand = new() { File = file };
+            AddImageCommand addGIFCommand = new() { File = file , VehicleId = vehicleId};
             AddedImageDto result = await Mediator.Send(addGIFCommand);
             return Ok(result);
         }

@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using Application.Services.ImageService;
+using Application.Services.StreamImageService;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -16,6 +18,9 @@ namespace Application
 
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
+
+            services.AddScoped<IStreamImageService, StreamImageManager>();
+            services.AddScoped<IImageService, ImageManager>();
 
 
             return services;
