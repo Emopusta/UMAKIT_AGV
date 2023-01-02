@@ -1,4 +1,5 @@
-﻿using Application.Services.ImageService;
+﻿using Application.Features.Images.Rules;
+using Application.Services.ImageService;
 using Application.Services.StreamImageService;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +23,7 @@ namespace Application
             services.AddScoped<IStreamImageService, StreamImageManager>();
             services.AddScoped<IImageService, ImageManager>();
 
+            services.AddScoped<ImageBusinessRules>();
 
             return services;
 

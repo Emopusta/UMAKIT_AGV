@@ -1,5 +1,6 @@
 ﻿using Application.Features.Images.Constants;
 using Application.Features.Images.Dtos;
+using Application.Features.Images.Rules;
 using Application.Services.ImageService;
 using Application.Services.Repositories;
 using Application.Services.StreamImageService;
@@ -25,11 +26,13 @@ namespace Application.Features.Images.Commands.AddImage
         {
             private readonly IImageRepository _imageRepository;
             private readonly IImageService _imageService;
+            private readonly ImageBusinessRules _imageBusinessRules;
 
-            public AddImageCommandHandler(IImageRepository imageRepository, IImageService imageService)
+            public AddImageCommandHandler(IImageRepository imageRepository, IImageService imageService, ImageBusinessRules imageBusinessRules)
             {
                 _imageRepository = imageRepository;
                 _imageService = imageService;
+                _imageBusinessRules = imageBusinessRules;
             }
 
             public async Task<AddedImageDto> Handle(AddImageCommand request, CancellationToken cancellationToken)
@@ -40,6 +43,10 @@ namespace Application.Features.Images.Commands.AddImage
                     Path = FileHelper.Upload(request.File, ImageConstants.Path)
                 };
                 Image addedImage = await _imageRepository.AddAsync(image);
+
+                await _imageBusinessRules.VehicleMustExistWhenImageAdded(request.VehicleId);
+                await _imageBusinessRules.StreamImageMustExistWhenImageAdded(request.VehicleId);
+
 
                 await _imageService.UpdateStreamImageWithImage(addedImage);
 
